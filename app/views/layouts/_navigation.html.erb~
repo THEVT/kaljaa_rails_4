@@ -1,0 +1,57 @@
+<% if !@user.nil? %>
+	<div id="banner">
+		<div class="content">
+			<a href="/"><img id="logo" alt="Kaljaa Logo" src="/images/_.gif" /></a>
+			<div id="cheers"></div>
+			<div class="clear"></div>
+			<div id="navigation">
+				<div class="left"><a class="nav_link" href="/account">Home</a></div>
+				<div class="left"><a class="nav_link" href="/profile">Profile</a></div>
+				<div class="left"><a class="nav_link" href="/friends">Friends</a></div>
+				<div class="left"><a class="nav_link" href="/messages">Messages</a></div>
+				<div class="left"><a class="nav_link" href="/blogs">Blogs</a></div>
+				<div class="left"><a class="nav_link" href="/news">News</a></div>
+				<div class="left"><a class="nav_link" href="/beers">Beers</a></div>
+				<div class="left"><a class="nav_link" href="/search/?query=">Search</a></div>
+				<div class="right"><%= nav_button_link "Log Out", :controller => :account, :action => :logout, :method => "post" %></div>
+				<div class="right"><a class="nav_link" href="/settings">Settings</a></div>
+				<div class="clear"></div>
+			</div>
+		</div>
+	</div>
+<% else %>
+	<div id="banner-unauthed">
+		<div class="content">
+			<a href="/"><img id="logo" alt="Kaljaa Logo" src="/assets/logo.png"/></a>
+			<div id="navigation">
+				<!-- check original nav -->
+				<div class="left"><a class="nav_link" href="/blogs">Blogs</a></div>
+				<div class="left"><a class="nav_link" href="/news">News</a></div>
+				<div class="left"><a class="nav_link" href="/beers">Beers</a></div>
+				<div class="clear"></div>
+			</div>
+			<form id="auth" action="/home/authenticate" method="post">
+				<table>
+					<tr>
+						<td>Email:</td>
+						<td>
+							<input name="email" size='' maxlength='' tabindex=1/>
+						</td>
+						<td>
+							<label>Remember Me? <input type="checkbox" name="remember_me"  tabindex=3/></label>
+						</td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td>
+							<input type="password" name="password" size='' maxlength=''  tabindex=2/>
+						</td>
+						<td>
+							<input class="kj-button red" type="submit" value="Login"  tabindex=4/>
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+<% end %>

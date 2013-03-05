@@ -1,0 +1,7 @@
+<div id="footer">
+	<%= link_to "Terms of Service", :controller => "terms" %>
+	<%= link_to "Privacy", :controller => "privacy" %>
+	<a>Kaljaa &#169 2011</a>
+	<%= link_to "FAQ", :controller => "faq" %>
+	<%= link_to "Support", :controller => "support" %>
+</div>
