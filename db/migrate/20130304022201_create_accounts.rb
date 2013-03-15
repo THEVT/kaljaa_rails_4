@@ -1,5 +1,6 @@
 class CreateAccounts < ActiveRecord::Migration
   def change
+=begin
     create_table :accounts do |t|
       t.string :email
       t.string :pw
@@ -10,8 +11,8 @@ class CreateAccounts < ActiveRecord::Migration
 
       t.timestamps
     end
-	
-	add_column :accounts, :enabled, :integer, default: 1
 
+	add_column :accounts, :enabled, :integer, default: 1
+=end
   end
 end

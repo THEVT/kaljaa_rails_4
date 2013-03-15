@@ -56,25 +56,25 @@
 			<div class="profile-type">
 				<div class="profile-header">Social</div>
 				<div class="desc">If you just plain enjoy beer then this profile type is for you.</div>
-				<div class="center-button"><button class="kj-button black" onclick="Client.setPage('/register?type=social');">CREATE PROFILE</button></div>
+				<div class="center-button"><%= link_to "Create Profile", signup_path(type: "social"), class: "button-kaljaa-dark"  %></div>
 			</div>
 			<div class="separator"></div>
 			<div class="profile-type">
 				<div class="profile-header">Media</div>
 				<div class="desc">If you're a critic or run any form of media that reports on the brewing industry then this is your profile type.</div>
-				<div class="center-button"><button type="button" class="kj-button black" onclick="Client.setPage('/register?type=media');">CREATE PROFILE</button></div>
+				<div class="center-button"><%= link_to "Create Profile", signup_path(type: "media"), class: "button-kaljaa-dark"  %></div>
 			</div>
 			<div class="separator"></div>
 			<div class="profile-type">
 				<div class="profile-header">Supplier/Distributor</div>
 				<div class="desc">If you supply materials, provide services, or distribute brewed goods then sign up here!</div>
-				<div class="center-button"><button class="kj-button black" onclick="Client.setPage('/register?type=industry');">CREATE PROFILE</button></div>
+				<div class="center-button"><%= link_to "Create Profile", signup_path(type: "industry"), class: "button-kaljaa-dark"  %></div>
 			</div>
 			<div class="separator"></div>
 			<div class="profile-type">
 				<div class="profile-header">Restaurant/Vendor</div>
 				<div class="desc">If you represent a store, restaurant, or other beer selling establishment then this profile is for you.</div>
-				<div class="center-button"><button class="kj-button black" onclick="Client.setPage('/register?type=vendor');">CREATE PROFILE</button></div>
+				<div class="center-button"><%= link_to "Create Profile", signup_path(type: "vendor"), class: "button-kaljaa-dark"  %></div>
 			</div>
 		</div>
 	</div>

@@ -3,7 +3,11 @@ class AccountController < ApplicationController
 	end
 	
 	def register
-		render partial: params[:type]
+		render params[:type]
+	end
+
+	def show
+		@user= Account.find(params[:id])
 	end
 		
 

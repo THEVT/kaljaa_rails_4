@@ -1,9 +1,14 @@
 KaljaaFb::Application.routes.draw do
+	resources :accounts
+	resources :sessions, only: [:new, :create, :destroy]
+	resources :microposts, only: [:create, :destroy]
 
+	get "users/new"
 
 	root to: 'home#index'
 
-	match '/register', to: 'account#register'
+	match '/m_home', to: 'accounts#m_home'	
+	match '/signup', to: 'accounts#new'
 	match '/copyright', to: 'home#copyright'
 	match '/faq', to: 'home#faq'
 	match '/learn', to: 'home#learn'
@@ -11,6 +16,8 @@ KaljaaFb::Application.routes.draw do
 	match '/support', to: 'home#support'
 	match '/terms', to: 'home#terms'
 	match '/register', to: 'home#register'
+	match '/signin', to: 'sessions#new'
+	match '/signout', to: 'sessions#destroy', via: :delete
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

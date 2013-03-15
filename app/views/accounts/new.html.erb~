@@ -1,0 +1,22 @@
+<h1>Sign up</h1>
+<p>Find me in app/views/account/new.html.erb</p>
+
+<%= form_for(@account) do |f| %>
+				<%= render 'shared/error_messages' %>
+
+				<%= f.label :email %>
+				<%= f.text_field :email %>
+
+				<%= f.label :password %>
+				<%= f.password_field :password %>
+
+				<%= f.label :password_confirmation, "Confirmation" %>
+				<%= f.password_field :password_confirmation %>
+
+				<%= f.radio_button :authorization, "1"%>
+				<%= f.label :authorization_terms, "I agree to the Terms of service" %>
+
+				<%= f.hidden_field :ty, :value => params[:type]  %>
+
+				<%= f.submit "Create my account"%>
+			<% end %>

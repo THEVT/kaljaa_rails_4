@@ -11,25 +11,36 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305045820) do
+ActiveRecord::Schema.define(:version => 20130313071442) do
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
-    t.string   "session_id"
     t.string   "authorization"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
     t.integer  "enabled",         :default => 1
     t.string   "ty"
     t.string   "password_digest"
+    t.string   "remember_token"
+    t.boolean  "admin",           :default => false
   end
 
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
+  add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
 
   create_table "constants", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "microposts", :force => true do |t|
+    t.string   "content"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "microposts", ["account_id", "created_at"], :name => "index_microposts_on_account_id_and_created_at"
 
   create_table "profiles", :force => true do |t|
     t.integer  "wall"

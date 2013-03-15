@@ -8,7 +8,7 @@ body { background: $kaljaacolor; }
 #logo { float: left; }
 #logo #logo-img { width: 500px; height: 250px; }
 #share a, #share iframe {
-	float:left;
+	float:right;
 	display: inline-block;
 	padding: 0 25px;
 }

@@ -11,7 +11,7 @@ class CreateAccounts < ActiveRecord::Migration
       t.timestamps
     end
 	
-	change_column :accounts, :enabled, :integer, default: 1
+	add_column :accounts, :enabled, :integer, default: 1
 
   end
 end
