@@ -27,6 +27,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "best_in_place", "~> 2.1.0"
 
 group :test do
 	gem 'capybara', '~> 2.0.2'

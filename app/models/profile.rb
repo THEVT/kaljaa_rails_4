@@ -18,5 +18,19 @@
 #
 
 class Profile < ActiveRecord::Base
-  attr_accessible :s1, :s2, :s3, :s4, :s5, :s5, :s6, :s7, :s8, :ts, :wall, :city
+  
+attr_accessible :s1, :s2, :s3, :s4, :s5, :s5, :s6, :s7, :s8, :ts, :wall, :city
+belongs_to :account
+has_one :activity, foreign_key: "profile_id", dependent: :destroy
+has_one :interest, foreign_key: "profile_id", dependent: :destroy
+has_one :favbrewery, foreign_key: "profile_id", dependent: :destroy
+has_one :favbeer, foreign_key: "profile_id", dependent: :destroy
+has_one :honorablebeer, foreign_key: "profile_id", dependent: :destroy
+has_one :misc, foreign_key: "profile_id", dependent: :destroy
+has_one :about, foreign_key: "profile_id", dependent: :destroy
+has_one :location, foreign_key: "profile_id", dependent: :destroy
+has_one :service, foreign_key: "profile_id", dependent: :destroy
+
+validates :account_id, presence: true
+
 end

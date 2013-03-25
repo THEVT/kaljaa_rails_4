@@ -1,7 +1,26 @@
 KaljaaFb::Application.routes.draw do
-	resources :accounts
+	resources :accounts do
+		member do
+			get :following, :followers
+		end
+	end
 	resources :sessions, only: [:new, :create, :destroy]
 	resources :microposts, only: [:create, :destroy]
+	resources :relationships, only: [:create, :destroy]
+	resources :profiles do
+		member do
+			get :info
+		end
+	end
+	resources :activities
+	resources :interests
+	resources :favbreweries
+	resources :favbeers
+	resources :honorablebeers
+	resources :miscs
+	resources :abouts
+	resources :locations
+	resources :services
 
 	get "users/new"
 

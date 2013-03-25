@@ -5,10 +5,10 @@
 			<div id="cheers"></div>
 			<div class="clear"></div>
 			<div id="navigation">
-				<div class="left"><a class="nav_link" href="/account">Home</a></div>
-				<div class="left"><%= link_to "Profile", current_user %></div>
+				<div class="left"><%= link_to "Home", current_user %></div>
+				<div class="left"><%= link_to "Profile", profile_path(5) %></div>
 				<div class="left"><%= link_to "Friends", accounts_path %></div>
-				<div class="left"><a class="nav_link" href="/messages">Messages</a></div>
+				<div class="left"><%= link_to "Messages", m_home_path %></div>
 				<div class="left"><a class="nav_link" href="/blogs">Blogs</a></div>
 				<div class="left"><a class="nav_link" href="/news">News</a></div>
 				<div class="left"><a class="nav_link" href="/beers">Beers</a></div>
@@ -30,28 +30,18 @@
 				<div class="left"><a class="nav_link" href="/beers">Beers</a></div>
 				<div class="clear"></div>
 			</div>
-			<!--<form id="auth" action="/home/authenticate" method="post">
-				<table>
-					<tr>
-						<td>Email:</td>
-						<td>
-							<input name="email" size='' maxlength='' tabindex=1/>
-						</td>
-						<td>
-							<label>Remember Me? <input type="checkbox" name="remember_me"  tabindex=3/></label>
-						</td>
-					</tr>
-					<tr>
-						<td>Password:</td>
-						<td>
-							<input type="password" name="password" size='' maxlength=''  tabindex=2/>
-						</td>
-						<td>
-							<input class="kj-button red" type="submit" value="Login"  tabindex=4/>
-						</td>
-					</tr>
-				</table>
-			</form>-->
+				<%= form_for(:session, url: sessions_path) do |f| %>
+
+					<%= f.label :email %>
+					<%= f.text_field :email %>
+
+					<%= f.label :password %>
+					<%= f.password_field :password %>
+
+					<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
+				<% end %>
+
+				<p>New user? <%= link_to "Sign up now!", signup_path %></p>
 		</div>
 	</div>
 <% end %>

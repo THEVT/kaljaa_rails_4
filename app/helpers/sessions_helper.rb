@@ -42,4 +42,7 @@ module SessionsHelper
 		session[:return_to] = request.url
 	end
 
+	def current_profile
+		current_user.profile
+	end
 end

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130313071442) do
+ActiveRecord::Schema.define(:version => 20130325055434) do
+
+  create_table "abouts", :force => true do |t|
+    t.text     "content"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "abouts", ["profile_id", "updated_at"], :name => "index_abouts_on_profile_id_and_updated_at"
 
   create_table "accounts", :force => true do |t|
     t.string   "email"
@@ -28,10 +37,84 @@ ActiveRecord::Schema.define(:version => 20130313071442) do
   add_index "accounts", ["email"], :name => "index_accounts_on_email", :unique => true
   add_index "accounts", ["remember_token"], :name => "index_accounts_on_remember_token"
 
+  create_table "activities", :force => true do |t|
+    t.text     "content"
+    t.integer  "account_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "profile_id"
+  end
+
+  add_index "activities", ["created_at"], :name => "index_activities_on_account_id_and_created_at"
+  add_index "activities", ["profile_id"], :name => "index_activities_on_profile_id"
+
   create_table "constants", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "favbeers", :force => true do |t|
+    t.string   "b1"
+    t.string   "b2"
+    t.string   "b3"
+    t.string   "b4"
+    t.string   "b5"
+    t.string   "b6"
+    t.string   "b7"
+    t.string   "b8"
+    t.string   "b9"
+    t.string   "b10"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favbeers", ["profile_id", "updated_at"], :name => "index_favbeers_on_profile_id_and_updated_at"
+
+  create_table "favbreweries", :force => true do |t|
+    t.string   "b1"
+    t.string   "b2"
+    t.string   "b3"
+    t.string   "b4"
+    t.string   "b5"
+    t.string   "b6"
+    t.string   "b7"
+    t.string   "b8"
+    t.string   "b9"
+    t.string   "b10"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "favbreweries", ["profile_id", "updated_at"], :name => "index_favbreweries_on_profile_id_and_updated_at"
+
+  create_table "honorablebeers", :force => true do |t|
+    t.text     "content"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "honorablebeers", ["profile_id", "updated_at"], :name => "index_honorablebeers_on_profile_id_and_updated_at"
+
+  create_table "interests", :force => true do |t|
+    t.text     "content"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "interests", ["profile_id", "created_at"], :name => "index_interests_on_profile_id_and_created_at"
+
+  create_table "locations", :force => true do |t|
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "profile_id"
+  end
+
+  add_index "locations", ["profile_id", "updated_at"], :name => "index_locations_on_profile_id_and_updated_at"
 
   create_table "microposts", :force => true do |t|
     t.string   "content"
@@ -41,6 +124,15 @@ ActiveRecord::Schema.define(:version => 20130313071442) do
   end
 
   add_index "microposts", ["account_id", "created_at"], :name => "index_microposts_on_account_id_and_created_at"
+
+  create_table "miscs", :force => true do |t|
+    t.text     "content"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "miscs", ["profile_id", "updated_at"], :name => "index_miscs_on_profile_id_and_updated_at"
 
   create_table "profiles", :force => true do |t|
     t.integer  "wall"
@@ -55,6 +147,29 @@ ActiveRecord::Schema.define(:version => 20130313071442) do
     t.string   "s8"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "account_id"
   end
+
+  add_index "profiles", ["account_id", "created_at"], :name => "index_profiles_on_account_id_and_created_at"
+
+  create_table "relationships", :force => true do |t|
+    t.integer  "follower_id"
+    t.integer  "followed_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "relationships", ["followed_id"], :name => "index_relationships_on_followed_id"
+  add_index "relationships", ["follower_id", "followed_id"], :name => "index_relationships_on_follower_id_and_followed_id", :unique => true
+  add_index "relationships", ["follower_id"], :name => "index_relationships_on_follower_id"
+
+  create_table "services", :force => true do |t|
+    t.text     "content"
+    t.integer  "profile_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "services", ["profile_id", "updated_at"], :name => "index_services_on_profile_id_and_updated_at"
 
 end

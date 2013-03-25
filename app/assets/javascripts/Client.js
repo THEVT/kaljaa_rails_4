@@ -19,3 +19,4 @@ var Client = {};
 		window.open(url, 'child', 'toolbar=no,location=no,directories=no,menubar=no,width=850px,scrollbars=yes');
 	};
 }());
+

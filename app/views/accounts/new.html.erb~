@@ -1,8 +1,9 @@
 <h1>Sign up</h1>
-<p>Find me in app/views/account/new.html.erb</p>
+
+<%= render params[:type] %>
 
 <%= form_for(@account) do |f| %>
-				<%= render 'shared/error_messages' %>
+				<%= render 'shared/error_messages', object: f.object %>
 
 				<%= f.label :email %>
 				<%= f.text_field :email %>

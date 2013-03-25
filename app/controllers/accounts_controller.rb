@@ -7,7 +7,7 @@ class AccountsController < ApplicationController
 		#@type = params[:type]
 		@account= Account.new
 		@profile= Profile.new
-		render params[:type]
+		#render params[:type]
 	end
 
 	def create
@@ -26,9 +26,23 @@ class AccountsController < ApplicationController
 		flash[:success] = "User destroyed."
 		redirect_to accounts_url
 	end
-	
-	def register
-		render params[:type]
+
+	def feed
+		Micropost.from_accounts_followed_by(self)
+	end
+
+	def following
+		@title = "Following"
+		@account = Account.find(params[:id])
+		@accounts = @account.followed_accounts.paginate(page: params[:page])
+		render 'show_follow'
+	end
+
+	def followers
+		@title = "Followers"
+		@account = Account.find(params[:id])
+		@accounts = @account.followers.paginate(page: params[:page])
+		render 'show_follow'
 	end
 
 	def show
@@ -46,7 +60,7 @@ class AccountsController < ApplicationController
 
 	def update
 		@account = Account.find(params[:id])
-		if @account.update_attributes(params[:user])
+		if @account.update_attributes(params[:account])
 			flash[:success] = "Profile updated"
 			sign_in @account
 			redirect_to @account
@@ -60,6 +74,8 @@ class AccountsController < ApplicationController
 		#if signed_in?
 		@micropost = current_user.microposts.build
 		@feed_items = current_user.feed.paginate(page: params[:page])
+		@profile = current_user.profile
+		@profile2 = @profile.activity
 	end
 
   private

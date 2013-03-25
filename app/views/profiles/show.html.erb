@@ -1,0 +1,58 @@
+<p>Yo Yo<p>
+
+<%= @profile.s1 %>
+<%= @profile.s2 %>
+<%= @account.email %>
+
+<%= @profile.favbrewery.b2 %>
+
+<div id="tabs">
+	<ul>
+		<li><a href="#Info">Info</a></li>
+		<li><a href="#About_Info">About</a></li>
+		<li><a href="#Services">Services</a></li>
+		<li><a href="#Beer">Beers</a></li>
+		<li><a href="#Reviews">Reviews</a></li>
+		<li><a href="#Blogs">Blogs</a></li>
+		<li><a href="#News">News</a></li>
+		<li><a href="#Misc">Misc</a></li>
+	</ul>
+	<div id="Info">
+		<%= render 'info' %>
+
+		<%= render 'activities/activity' %>
+
+		<%= render 'interests/interest' %>
+	</div>
+	<div id="About_Info">
+		
+		<%= render 'abouts/about' %>
+
+		<%= render 'locations/location' %>
+	</div>
+	<div id="Services">
+		<%= render 'services/service' %>
+	</div>
+	<div id="Beer">
+		<%= render 'favbreweries/favbrewery' %>
+
+		<%= render 'favbeers/favbeer' %>
+
+		<%= render 'honorablebeers/honorablebeer' %>
+	</div>
+	<div id="Reviews">
+		<p>Mauris eleifend </p>
+	</div>
+	<div id="Blogs">
+		<p>Proin elit arcu</p>
+	</div>
+	<div id="News">
+		<p>Morbi tincidunt</p>
+	</div>
+	<div id="Misc">
+		<%= render 'miscs/misc' %>	
+	</div>
+</div>
+
+
+
