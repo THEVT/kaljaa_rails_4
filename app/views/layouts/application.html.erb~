@@ -12,7 +12,6 @@
 		<div id="wrapper" class="clearfix">
 			<%= yield %>
 		</div>
-		<%= render "layouts/footer" %>
 		<%= debug(params) if Rails.env.development? %>
 	</div>
 </body>

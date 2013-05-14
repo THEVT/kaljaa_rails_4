@@ -9,10 +9,9 @@ jQuery ->
 
 jQuery ->
     $( "#tabs" ).tabs();
-
 jQuery ->
-	$("#misc_edit").click ->
-		$(this).replaceWith "<%= simple_format @profile.misc.content %>"
+	$("#tabs ul li a").click -> location.hash = $(this).attr("href");
+
 
 
 

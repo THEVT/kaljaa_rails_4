@@ -1,7 +1,7 @@
 
 a,a:visited,a:hover { color: $kaljaacolor; }
-body { background: $kaljaacolor; }
-#main { background: $kaljaacolor; min-width: 800px;}
+//body { background: $kaljaacolor; }
+#main { /*background: $kaljaacolor;*/ min-width: 800px;}
 
 #info { background-image: url(/images/gray.png); background-repeat: repeat-x; background-color: #e6e6e6; padding: 20px; }
 .content { width: 800px; }

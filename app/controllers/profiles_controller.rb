@@ -1,10 +1,13 @@
 class ProfilesController < ApplicationController
+	helper :friendships	
+
 	before_filter :signed_in_user 
 	before_filter :correct_user,   only: [:edit, :update]
 	#before_filter :admin_user,     only: [:edit, :update]
 	respond_to :json, :html, :xml, :js
 	
 	def index
+		@profiles = Profile.paginate(page: params[:page])
 	end
 
 	def show
@@ -40,6 +43,7 @@ class ProfilesController < ApplicationController
 		#variables for about partial
 		@about_present = @profile.about
 		@about = @profile.build_about if !About.exists?(profile_id: @profile.id)
+
 		#variables for location partial
 		@location_present = @profile.location
 		@location = @profile.build_location if !Location.exists?(profile_id: @profile.id)
@@ -47,6 +51,23 @@ class ProfilesController < ApplicationController
 		#variables for service partial
 		@service_present = @profile.service
 		@service = @profile.build_service if !Service.exists?(profile_id: @profile.id)
+
+		#variables for beers partial
+		@beers = @profile.beer.paginate(page: params[:page], per_page: 5)
+		@beer = @profile.beer.build
+		
+		#variables for reviewbeers partial
+		@reviewbeers = @profile.reviewbeer.paginate(page: params[:page], per_page: 5)
+		@reviewbeer = @profile.reviewbeer.build
+
+		#variables for blogs created
+		@blogs = @profile.blog.paginate(page: params[:page], per_page: 5)
+
+		#variables for news articles created
+		@articles = @profile.article.paginate(page: params[:page], per_page: 5)
+		
+		#variables for news events created
+		@events = @profile.event.paginate(page: params[:page], per_page: 5)
 
 
 	end

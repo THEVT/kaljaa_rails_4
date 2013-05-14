@@ -14,7 +14,10 @@ before_filter :signed_in_user
 	def destroy
 		@account = Relationship.find(params[:id]).followed
 		current_user.unfollow!(@account)
-		redirect_to @account
+		respond_to do |format|
+			format.html { redirect_to @account }
+			format.js
+		end
 	end
 
 end

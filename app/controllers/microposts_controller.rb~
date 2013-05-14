@@ -5,6 +5,7 @@ class MicropostsController < ApplicationController
 	def create
 		@micropost = current_user.microposts.build(params[:micropost])
 		if @micropost.save
+			UserMailer.welcome_email(@account).deliver
 			flash[:success] = "Micropost created!"
 			redirect_to m_home_path
 		else

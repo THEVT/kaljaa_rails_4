@@ -5,6 +5,9 @@ gem "bcrypt-ruby", "3.0.1"
 gem "mysql2", "~> 0.3.11"
 gem "faker", "~> 1.1.2"
 gem "will_paginate", "~> 3.0.4"
+gem "paperclip", "~> 3.4.1"
+gem 'tinymce-rails'
+gem 'simple_calendar'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -27,6 +30,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem "jcrop-rails", "~> 1.0.2"
 gem "best_in_place", "~> 2.1.0"
 
 group :test do

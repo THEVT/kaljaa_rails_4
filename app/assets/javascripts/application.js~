@@ -12,6 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.purr
+//= require jquery-ui
+//= require tinymce
+//= require tinymce-jquery
 //= require best_in_place
 //= require_tree .

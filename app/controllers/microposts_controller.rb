@@ -3,8 +3,10 @@ class MicropostsController < ApplicationController
 	before_filter :correct_user,   only: :destroy
 
 	def create
+		@account = current_user
 		@micropost = current_user.microposts.build(params[:micropost])
 		if @micropost.save
+			UserMailer.welcome_email(@account).deliver
 			flash[:success] = "Micropost created!"
 			redirect_to m_home_path
 		else

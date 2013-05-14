@@ -13,13 +13,45 @@ KaljaaFb::Application.routes.draw do
 		end
 	end
 	resources :activities
+	resources :articles
+	resources :beers do
+		resources :comments
+	end
+	resources :beercentrals
+	resources :blogs
 	resources :interests
+	resources :invites do
+		member do
+			get 'admin'
+			post 'admin'
+		end
+	end
+	resources :events do
+		member do
+			get 'invite'
+		end
+	end
 	resources :favbreweries
 	resources :favbeers
+	resources :friendships do
+		member do
+			post 'accept'
+			get 'accept'
+			post 'decline'
+			get 'decline'
+			post 'cancel'
+			get 'cancel'
+			post 'delete'
+			get 'delete'
+		end
+	end
 	resources :honorablebeers
 	resources :miscs
 	resources :abouts
 	resources :locations
+	resources :reviewbeers do
+		resources :comments
+	end
 	resources :services
 
 	get "users/new"

@@ -1,0 +1,11 @@
+<%= @blog.title %>
+<%= @blog.content.html_safe %>
+<% if current_profile?(@blog.profile) %>
+		<%= link_to 'Edit Blog',  edit_blog_path(@blog.id) %>
+		<%= link_to "delete", @blog, method: :delete,
+				                 data: { confirm: "You sure?" },
+				                 title: @blog.content %>
+	<% end %>
+
+<%= link_to "Return to Blog Central", blogs_path %>
+

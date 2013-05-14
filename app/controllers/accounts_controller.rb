@@ -6,13 +6,13 @@ class AccountsController < ApplicationController
 	def new
 		#@type = params[:type]
 		@account= Account.new
-		@profile= Profile.new
+		#@profile= Profile.new
 		#render params[:type]
 	end
 
 	def create
 		@account = Account.new(params[:account])
-		@profile = Profile.new(params[:profile])
+		#@profile = Profile.new(params[:profile])
 		if @account.save
 			sign_in @account
 			redirect_to @account
@@ -52,6 +52,7 @@ class AccountsController < ApplicationController
 
 	def index
 		@accounts = Account.paginate(page: params[:page])
+		@profile = current_profile
 	end
 
 	def edit

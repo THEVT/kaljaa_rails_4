@@ -10,6 +10,9 @@ jQuery ->
 jQuery ->
     $( "#tabs" ).tabs();
 
+jQuery ->
+	$("#tabs ul li a").click -> location.hash = $(this).attr("href");
+
 
 
 

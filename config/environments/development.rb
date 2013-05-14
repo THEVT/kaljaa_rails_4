@@ -34,4 +34,16 @@ KaljaaFb::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+	#Mail configuration
+	config.action_mailer.delivery_method = :smtp
+	config.action_mailer.smtp_settings = {
+	  address:              'smtp.gmail.com',
+	  port:                 587,
+	  domain:               'kaljaa.com',
+	  user_name:            'dew.boms.llc',
+	  password:             'Lnlthaudb11!',
+	  authentication:       'plain',
+	  enable_starttls_auto: true  }
+
 end

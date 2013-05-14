@@ -1,0 +1,20 @@
+<%= link_to "Return to Event Central", events_path %>
+
+<%= image_tag @event.photo.url(:thumb) %>
+<%= @event.title %>
+<%= @event.description %>
+<% if current_profile?(@event.profile) || event_admin %>
+		<%= link_to 'Edit Event',  edit_event_path(@event.id) %>
+		<% if current_profile?(@event.profile) || event_admin %>
+			<%= link_to "delete", @event, method: :delete,
+						             data: { confirm: "You sure?" },
+						             title: @event.description %>
+		<% end %>
+	<% end %>
+
+<%= link_to "Invite Friends", invite_event_path %>
+
+<%= render 'invites/response' %>
+
+
+
