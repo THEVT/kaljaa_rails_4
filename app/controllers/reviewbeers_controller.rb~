@@ -31,9 +31,9 @@ class ReviewbeersController < ApplicationController
 
 	def create
 		@profile= current_user.profile
-		@reviewbeer = @profile.reviewbeer.build(params[:reviewbeer])
+		@reviewbeer = @profile.reviebeer.build(params[:reviewbeer])
 		if @reviewbeer.save
-			flash[:success] = "Reviewbeers Updated!"
+			flash[:success] = "Beer review created!"
 			redirect_to @profile
 		else
 			render 'profiles/show'

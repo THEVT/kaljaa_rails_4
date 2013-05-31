@@ -1,4 +1,4 @@
-<%= link_to "Return to News Central", blogs_path %>
+<%= link_to "Return to "+@article.title, @article %>
 
 <%= form_for(@article) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>

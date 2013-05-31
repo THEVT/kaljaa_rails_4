@@ -18,3 +18,7 @@
 				                 data: { confirm: "You sure?" },
 				                 title: @reviewbeer.content %>
 	<% end %>
+
+<%= link_to 'Start Blog from this Event',  new_reviewbeer_comment_path %>
+
+<%= render 'comments/comment' %>

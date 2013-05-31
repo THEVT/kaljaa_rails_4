@@ -1,8 +1,6 @@
-
-<h1><%=@profile.s1 %> Blogs</h1>
-
+	<h3>Blogs Started (<%= @profile.blog.count %>)</h3>
 <% if @profile.blog.any? %>
-	<h3>Blogs (<%= @profile.blog.count %>)</h3>
+
 	<ol class="beers">
 		<%= render @blogs %>
 	</ol>

@@ -8,17 +8,26 @@ KaljaaFb::Application.routes.draw do
 	resources :microposts, only: [:create, :destroy]
 	resources :relationships, only: [:create, :destroy]
 	resources :profiles do
+		resources :albums
 		member do
 			get :info
 		end
 	end
 	resources :activities
-	resources :articles
+	resources :albums do
+		resources :photos
+	end
+	resources :articles do
+		resources :albums
+	end
 	resources :beers do
 		resources :comments
 	end
 	resources :beercentrals
-	resources :blogs
+	resources :blogs do
+		resources :albums
+	end
+	resources :conversations
 	resources :interests
 	resources :invites do
 		member do
@@ -27,6 +36,9 @@ KaljaaFb::Application.routes.draw do
 		end
 	end
 	resources :events do
+		resources :albums
+		resources :blogs
+		resources :articles
 		member do
 			get 'invite'
 		end
@@ -45,8 +57,24 @@ KaljaaFb::Application.routes.draw do
 			get 'delete'
 		end
 	end
+	resources :groups do
+		resources :albums
+		resources :blogs
+		resources :articles
+		member do
+			get 'members'
+		end
+	end
 	resources :honorablebeers
+	resources :members do
+		member do
+			get 'admin'
+			post 'admin'
+		end
+	end
+	resources :messages
 	resources :miscs
+	resources :photos
 	resources :abouts
 	resources :locations
 	resources :reviewbeers do

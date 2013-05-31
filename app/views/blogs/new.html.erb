@@ -9,6 +9,10 @@
 		<%= f.label :content, 'Content:' %>		
 		<%= f.text_area :content, :class => "tinymce", :rows => 40, :cols => 120 %>
 
+		<%= f.hidden_field :event_id, :value => params[:event_id]  %>
+
+		<%= f.hidden_field :group_id, :value => params[:group_id]  %>
+
 	</div>
 	<%= f.submit "Post"%>
 	<%= link_to "Cancel", @profile %>

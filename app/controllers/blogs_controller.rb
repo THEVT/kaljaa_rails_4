@@ -13,10 +13,12 @@ class BlogsController < ApplicationController
 
 	def show
 		@blog= Blog.find(params[:id])
+		@blog_album = Album.find_by_blog_id(@blog)
 		@profile_id= @blog.profile_id
 		@profile= Profile.find(@profile_id)
 		@account_id= @profile.account_id
 		@account = Account.find(@account_id)
+		@album = @blog.album.build
 
 	end
 
@@ -46,6 +48,7 @@ class BlogsController < ApplicationController
 	end
 
 	def new
+		#@event = Event.find(params[:event_id])
 		@profile = current_profile
 		@blog = @profile.blog.build
 	end

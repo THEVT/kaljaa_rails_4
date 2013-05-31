@@ -18,6 +18,10 @@
 			<%= f.hidden_field :word_on_the_street, value: "0"  %>
 
 		<% end %>
+
+		<%= f.hidden_field :event_id, :value => params[:event_id]  %>
+
+		<%= f.hidden_field :group_id, :value => params[:group_id]  %>
 			
 	</div>
 	<%= f.submit "Post"%>

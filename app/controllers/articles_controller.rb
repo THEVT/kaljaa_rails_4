@@ -13,10 +13,12 @@ class ArticlesController < ApplicationController
 
 	def show
 		@article= Article.find(params[:id])
+		@article_album = Album.find_by_article_id(@article)
 		@profile_id= @article.profile_id
 		@profile= Profile.find(@profile_id)
 		@account_id= @profile.account_id
 		@account = Account.find(@account_id)
+		@album = @article.album.build
 
 	end
 

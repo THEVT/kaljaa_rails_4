@@ -13,10 +13,12 @@ class BlogsController < ApplicationController
 
 	def show
 		@blog= Blog.find(params[:id])
+		@article_album = Album.find_by_article_id(@article)
 		@profile_id= @blog.profile_id
 		@profile= Profile.find(@profile_id)
 		@account_id= @profile.account_id
 		@account = Account.find(@account_id)
+		@album = @article.album.build
 
 	end
 
@@ -46,13 +48,14 @@ class BlogsController < ApplicationController
 	end
 
 	def new
+		#@event = Event.find(params[:event_id])
 		@profile = current_profile
 		@blog = @profile.blog.build
 	end
 
 	def update
 		@blog= Blog.find(params[:id])
-		if @blog.update_attribtes(params[:blog])
+		if @blog.update_attributes(params[:blog])
 			flash[:success] = "Beers updated"
 			respond_with @blog
 		else
