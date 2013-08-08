@@ -1,4 +1,19 @@
 <% if signed_in? %>
+
+	<header class="navbar navbar-fixed-top navbar-inverse">
+		<div class="navbar-inner">
+			<div class="container">
+				<%= link_to "sample app", '#', id: "logo" %>
+				<nav>
+					<ul class="nav pull-right">
+						<li><%= link_to "Home", current_user %></li>
+						<li><%= link_to "Profile", profile_path(current_profile) %></li>
+						<li><%= link_to "Profiles", profiles_path %></li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+	</header>
 	<div id="banner">
 		<div class="content">
 			<a href="/"><img id="logo" alt="Kaljaa Logo" src="/images/_.gif" /></a>
@@ -14,6 +29,7 @@
 				<div class="left"><%= link_to "News", articles_path %></div>
 				<div class="left"><%= link_to "Beers", beercentrals_path %></div>
 				<div class="left"><%= link_to "Events", events_path %></div>
+				<div class="left"><%= link_to "Groups", groups_path %></div>
 				<div class="left"><a class="nav_link" href="/search/?query=">Search</a></div>
 				<div class="right"><%= link_to "Sign out", signout_path, method: "delete" %></div>
 				<div class="right"><%= link_to "Settings", edit_account_path(current_user) %></div>
@@ -32,6 +48,7 @@
 				<div class="left"><a class="nav_link" href="/beers">Beers</a></div>
 				<div class="clear"></div>
 			</div>
+			<div style= "color:white; display:inline;">
 				<%= form_for(:session, url: sessions_path) do |f| %>
 
 					<%= f.label :email %>
@@ -44,6 +61,7 @@
 				<% end %>
 
 				<p>New user? <%= link_to "Sign up now!", signup_path %></p>
+			</div>
 		</div>
 	</div>
 <% end %>
