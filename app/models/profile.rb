@@ -19,7 +19,9 @@
 
 class Profile < ActiveRecord::Base
   
-	attr_accessible :s1, :s2, :s3, :s4, :s5, :s5, :s6, :s7, :s8, :ts, :wall, :city, :account_id
+	attr_accessible :first_name, :last_name, :company, :phone, :website, :email, :gender, :street, :city, :ts, :wall, :state, :zipcode, :profile_type, :birthday, :account_id
+
+	validates :phone, numericality: { only_integer: true }
 
 	belongs_to :account
 	has_one :activity, foreign_key: "profile_id", dependent: :destroy
@@ -61,12 +63,10 @@ class Profile < ActiveRecord::Base
 
 	acts_as_messageable	
 
-	validates :account_id, presence: true
-
-	default_scope order: 'profiles.s1 ASC'
+	default_scope order: 'profiles.first_name ASC'
 
 	def name
-		s1
+		first_name
 	end
 
 	def mailboxer_email(object)

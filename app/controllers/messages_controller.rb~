@@ -9,7 +9,7 @@ class MessagesController < ApplicationController
 	# GET /messages/1
 	# GET /messages/1.xml
 	def show
-
+		@conversation = mailbox.conversations.find(params[:id])
 
 		if @message = Message.find_by_id(params[:id]) and @conversation = @message.conversation
 			if @conversation.is_participant?(@profile)

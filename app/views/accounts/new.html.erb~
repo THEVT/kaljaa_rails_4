@@ -1,23 +1,16 @@
 <h1>Sign up</h1>
+<%= link_to "Back to the Homepage", root_path %>
 
-<%= render params[:type] %>
-
-<%= form_for(@account) do |f| %>
-				<%= render 'shared/error_messages', object: f.object %>
-
-				<%= f.label :email %>
-				<%= f.text_field :email %>
-
-				<%= f.label :password %>
-				<%= f.password_field :password %>
-
-				<%= f.label :password_confirmation, "Confirmation" %>
-				<%= f.password_field :password_confirmation %>
-
-				<%= f.radio_button :authorization, "1"%>
-				<%= f.label :authorization_terms, "I agree to the Terms of service" %>
-
-				<%= f.hidden_field :ty, :value => params[:type]  %>
-
-				<%= f.submit "Create my account"%>
-			<% end %>
+<% if @type == 'brewery' %>
+	<%= render 'brewery' %>
+<% elsif @type == 'social' %>
+	<%= render 'social' %>
+<% elsif @type == 'media' %>
+	<%= render 'media' %>
+<% elsif @type == 'industry' %>
+	<%= render 'industry' %>
+<% elsif @type == 'vendor' %>
+	<%= render 'vendor' %>
+<% else %>
+	<h2>Oops! Somthing must of screwed up</h2>
+<% end %>

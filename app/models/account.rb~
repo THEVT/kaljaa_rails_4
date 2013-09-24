@@ -24,7 +24,8 @@ class Account < ActiveRecord::Base
 		                         class_name:  "Relationship",
 		                         dependent:   :destroy
 	has_many :followers, through: :reverse_relationships, source: :follower
-	has_one :profile  	
+	has_one :profile, dependent: :destroy
+	accepts_nested_attributes_for :profile  	
 
 	before_save { |account| account.email = email.downcase }
 	before_save :create_remember_token

@@ -9,9 +9,12 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require bootstrap-datepicker
  */
 
 @import "bootstrap";
+@import "variables.css.scss";
+/*
 @import "variables.css.scss";
 @import "common.css.scss";
 @import "albums.css.scss";
@@ -29,3 +32,4 @@
 @import "settings.css.scss";
 @import "styles.css.scss";
 @import "new.css.scss";
+*/

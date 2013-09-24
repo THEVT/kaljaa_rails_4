@@ -6,21 +6,39 @@ class AccountsController < ApplicationController
 	def new
 		#@type = params[:type]
 		@account= Account.new
+		@account.build_profile
+		@type= params[:type]
 		#@profile= Profile.new
 		#render params[:type]
 	end
 
 	def create
 		@account = Account.new(params[:account])
-		#@profile = Profile.new(params[:profile])
+		@type = params[:account][:ty]
+		#@profile = current_user.build_profile(params[:profile])
 		if @account.save
 			sign_in @account
 			redirect_to @account
+			#@profile = current_user.build_profile(params[:profile])
+			#if @profile.save
+				#redirect_to @account
+			#else
+			#	render 'new'
+			#end
+			#redirect_to @account
 		else
-			render 'new'
+			render 'new', locals: {type: @type}
 		end
 	end
+=begin
+	def profile
+		@profile
+	end
 
+	def profile_attributes=(attributes)
+    	# Process the attributes hash
+	end
+=end
 	def destroy
 		Account.find(params[:id]).destroy
 		flash[:success] = "User destroyed."

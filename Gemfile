@@ -10,6 +10,8 @@ gem 'tinymce-rails'
 gem 'simple_calendar'
 gem 'mailboxer'
 gem 'bootstrap-sass'
+gem 'activerecord-reputation-system'
+gem "ransack"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -33,7 +35,8 @@ end
 
 gem 'jquery-rails'
 gem "jcrop-rails", "~> 1.0.3"
-gem "best_in_place", "~> 2.1.0"
+gem "best_in_place"
+gem 'bootstrap-datepicker-rails'
 
 group :test do
 	gem 'capybara', '~> 2.0.2'

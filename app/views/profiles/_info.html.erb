@@ -1,58 +1,223 @@
 <% if current_user.admin? || current_user?(@account) %>
+	<h4>General Info</h4>
+	<% if @profile.profile_type == "social" %>
+		<p>
+		  First Name:
+		  <b><%= best_in_place @profile, :first_name %></b>
+		</p>
+		<p>
+		  Last Name:
+		 <b><%= best_in_place @profile, :last_name %></b>
+		</p>
+		<p>
+		<p>
+		  Birthday:
+		 <b><%= @profile.birthday.strftime("%B %d, %Y") %></b>
+		</p>
+		<p>
+		  Gender:
+		  <b><%= best_in_place @profile, :gender, :type => :select, :collection => [[1, "Male"], [2, "Female"]] %></b>
+		</p>
+		<p>
+		  Email:
+		  <b><%= best_in_place @profile, :email %></b>
+		</p>
+		<p>
+		  Website:
+		  <b><%= best_in_place @profile, :website %></b>
+		</p>
+		<p>
+		  Phone:
+		  <b><%= best_in_place @profile, :phone %></b>
+		</p>
+		<p>
+		  City:
+		  <b><%= best_in_place @profile, :city %></b>
+		</p>
+		<p>
+		  State:
+		  <b><%= best_in_place @profile, :state, :type => :select, collection: states_helper_for_best_in_place %></b>
+		</p>
+		<p>
+		  Zip Code:
+		  <b><%= best_in_place @profile, :zipcode %></b>
+		</p>
+	<% end %>
+	<% if @profile.profile_type != "social" %>
+		<% if @profile.profile_type == "brewery" %>
+			<p>
+			  Brewery:
+			  <b><%= best_in_place @profile, :company %></b>
+			</p>
+			<p>
+			  Brewery Website:
+			  <b><%= best_in_place @profile, :website%></b>
+			</p>
+			  Brewery Email:
+			  <b><%= best_in_place @profile, :email %></b>
+			</p>
+			<p>
+			  Brewery Phone:
+			  <b><%= best_in_place @profile, :phone%></b>
+			</p>
+		<% else %>
+			<p>
+			  Company:
+			  <b><%= best_in_place @profile, :company %></b>
+			</p>
+			<p>
+			  Company Website:
+			  <b><%= best_in_place @profile, :website%></b>
+			</p>
+			  Company Email:
+			  <b><%= best_in_place @profile, :email %></b>
+			</p>
+			<p>
+			  Company Phone:
+			  <b><%= best_in_place @profile, :phone%></b>
+			</p>
+		<% end %>
+		<p>
+		  Address:
+		  <b><%= best_in_place @profile, :street%></b>
+		</p>
+		<p>
+		  City:
+		  <b><%= best_in_place @profile, :city %></b>
+		</p>
+		<p>
+		  State:
+		  <b><%= best_in_place @profile, :state, :type => :select, collection: states_helper_for_best_in_place %></b>
+		</p>
+		<p>
+		  Zip Code:
+		  <b><%= best_in_place @profile, :zipcode %></b>
+		</p>
+	<% end %>
 
-<p>
-  <b>First Name:</b>
-  <%= best_in_place @profile, :s1 %>
-</p>
-<p>
-  <b>Last Name:</b>
-  <%= best_in_place @profile, :s2 %>
-</p>
-<p>
-  <b>City:</b>
-  <%= best_in_place @profile, :s3 %>
-</p>
-<p>
-  <b>State:</b>
-  <%= best_in_place @profile, :s4 %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= best_in_place @profile, :s5 %>
-</p>
-<p>
-  <b>Gender:</b>
-  <%= best_in_place @profile, :s6 %>
-</p>
-
-<%= link_to 'Edit Profile', edit_profile_path(@profile) %>
+	<%= link_to 'Edit Profile', edit_profile_path(@profile) %>
 
 <% else %>
 
-<p>
-  <b>First Name:</b>
-  <%= @profile.s1 %>
-</p>
-<p>
-  <b>Last Name:</b>
-  <%= @profile.s2 %>
-</p>
-<p>
-  <b>City:</b>
-  <%= @profile.s3 %>
-</p>
-<p>
-  <b>State:</b>
-  <%= @profile.s4 %>
-</p>
-<p>
-  <b>Email:</b>
-  <%= @profile.s5 %>
-</p>
-<p>
-  <b>Gender:</b>
-  <%= @profile.s6 %>
-</p>
+	<h4>General Info</h4>
+	<% if @profile.profile_type == "social" %>
+		<p>
+		  Name:
+		  <b><%=@profile.first_name %> <%=@profile.last_name %></b>
+		</p>
+		<p>
+		  Gender:
+		  <b><%= @profile.gender %></b>
+		</p>
+		<% if @profile.email? %>
+		<p>
+		  Email:
+		  <b><%= @profile.email %></b>
+		</p>
+		<% end %>
+		<% if @profile.website? %>
+		<p>
+		  Website:
+		  <b><%= @profile.website %></b>
+		</p>
+		<% end %>
+		<% if @profile.phone? %>
+		<p>
+		  Phone:
+		  <b><%= @profile.phone %></b>
+		</p>
+		<% end %>
+		<% if @profile.city? %>
+		<p>
+		  City:
+		  <b><%= @profile.city %></b>
+		</p>
+		<% end %>
+		<% if @profile.state? %>
+		<p>
+		  State:
+		  <b><%= @profile.state %></b>
+		</p>
+		<% end %>
+		<% if @profile.zipcode? %>
+		<p>
+		  Zip Code:
+		  <b><%= @profile.zipcode %></b>
+		</p>
+		<% end %>
+	<% end %>
+	<% if @profile.profile_type != "social" %>
+		<% if @profile.profile_type == "brewery" %>
+			<p>
+			  Brewery:
+			  <b><%= @profile.company %></b>
+			</p>
+			<% if @profile.website? %>
+				<p>
+				  Brewery Website:
+				  <b><%= @profile.website %></b>
+				</p>
+			<% end %>
+			<% if @profile.email? %>
+				<p>
+				  Brewery Email:
+				  <b><%= @profile.email %></b>
+				</p>
+			<% end %>
+			<% if @profile.phone? %>
+				<p>
+				  Brewery Phone:
+				  <b><%= @profile.phone %></b>
+				</p>
+			<% end %>
+		<% else %>
+			<p>
+			  Company:
+			  <b><%= @profile.company %></b>
+			</p>
+			<% if @profile.website? %>
+				<p>
+				  Company Website:
+				  <b><%= @profile.website %></b>
+				</p>
+			<% end %>
+			<% if @profile.email? %>
+				  Company Email:
+				  <b><%= @profile.email %></b>
+				</p>
+			<% end %>
+			<% if @profile.phone? %>
+				<p>
+				  Company Phone:
+				  <b><%= @profile.phone %></b>
+				</p>
+			<% end %>
+		<% end %>
+		<% if @profile.street? %>
+		<p>
+		  Address:
+		  <b><%= @profile.street %></b>
+		</p>
+		<% end %>
+		<% if @profile.city? %>
+		<p>
+		  City:
+		  <b><%= @profile.city %></b>
+		</p>
+		<% end %>
+		<% if @profile.state? %>
+		<p>
+		  State:
+		  <b><%= @profile.state %></b>
+		</p>
+		<% end %>
+		<% if @profile.zipcode? %>
+		<p>
+		  Zip Code:
+		  <b><%= @profile.zipcode %></b>
+		</p>
+		<% end %>
+	<% end %>
 
 <% end %>
 

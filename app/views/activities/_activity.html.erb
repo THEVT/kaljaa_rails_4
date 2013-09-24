@@ -1,27 +1,24 @@
+
+<h4>Activities</h4>
+
 <% if current_user.admin? || current_user?(@account) %>
-<p> Hello there </p>
-<%= @profile.id %>
 	<%if !Activity.exists?(profile_id: @profile.id) %>
 		<%= form_for(@activity) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
-		  <div class="field">
 		    <%= f.text_area :content, placeholder: "Add some activities..." %>
-		  </div>
 		  <%= f.submit "Post"%>
 		<% end %>
 	<% else %>
 		<p>
-			<b>Activities:</b>
-			<%= best_in_place @profile.activity, :content, type: :textarea, size: "15x12" %>
+			<%= best_in_place @profile.activity, :content, type: :textarea, %>
 		</p>
 
-	<%= link_to 'Edit Activities',  edit_activity_path(@activity_present) %>
+		<%= link_to 'Edit Activities',  edit_activity_path(@activity_present) %>
 	<% end %>
 
 <% else %>
 
 	<p>
-		<b>Activities:</b>
 		<%= @profile.activity.content %>
 	</p>
 

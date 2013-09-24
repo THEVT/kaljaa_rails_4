@@ -1,18 +1,21 @@
 
-<%= form_tag(messages_path method: :post) do %>
 
-<%= label_tag(:subject, "Subject:") %>
-
-<%= text_field_tag :subject,nil %>
-
-<%= label_tag (:body, 'Message') %>
-
-<%= text_area_tag :body, nil,:rows =>6, :cols=> 53, :maxlength => 5000 %>
-
-<%= submit_tag("Send") %>
+<%= form_for :message, url: [:reply, conversation] do |f| %>
+	<%= f.label :subject %>
+	<%= f.text_field :subject %>
+	<%= f.label :body %>
+	<%= f.text_area :body %>
+	<%= f.button :submit%>
+	<%= submit_tag 'Cancel', type: :reset%>
 
 <% end %>
 
+= simple_form_for :message, url: [:reply, conversation] do |f|
+  = f.input :subject
+  = f.input :body
+  .form-actions
+    = f.button :submit, class: 'btn-primary'
+    = submit_tag 'Cancel', type: :reset, class: 'btn btn-danger'
 
 
 

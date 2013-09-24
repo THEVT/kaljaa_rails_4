@@ -11,6 +11,9 @@
  *= require_self
  */
 
+@import "bootstrap";
+@import "variables.css.scss";
+/*
 @import "variables.css.scss";
 @import "common.css.scss";
 @import "albums.css.scss";
@@ -28,3 +31,4 @@
 @import "settings.css.scss";
 @import "styles.css.scss";
 @import "new.css.scss";
+*/

@@ -71,6 +71,17 @@ class ReviewbeersController < ApplicationController
 	def info
 	end
 
+	def vote
+		value = params[:type] == "up" ? 1 : -1
+		@reviewbeer= Reviewbeer.find(params[:id])
+		@reviewbeer.add_or_update_evaluation(:votes, value, current_profile)
+		respond_to do |format|
+			format.html { redirect_to @profile }
+			format.js
+		end
+		#redirect_to :back, notice: "Thank you for voting!"
+	end
+
 	private
 
 	def correct_user
@@ -115,5 +126,7 @@ class ReviewbeersController < ApplicationController
 	def items_on_hold
 		#[['A+', 12], ['A', 11], ['A-', 10], ['B+', 9], ['B', 8], ['B-', 7], ['C+', 6], ['C', 5], ['C-', 4], ['D+', 3], ['D', 2], ['D-', 1], ['F', 0]]
 	end
+
+
 
 end

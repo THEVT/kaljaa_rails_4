@@ -27,7 +27,13 @@ KaljaaFb::Application.routes.draw do
 	resources :blogs do
 		resources :albums
 	end
-	resources :conversations
+	resources :conversations, only: [:index, :show, :new, :create] do
+		member do
+			post :reply
+			post :trash
+			post :untrash
+		end
+	end
 	resources :interests
 	resources :invites do
 		member do
@@ -79,6 +85,7 @@ KaljaaFb::Application.routes.draw do
 	resources :locations
 	resources :reviewbeers do
 		resources :comments
+		member { post :vote }
 	end
 	resources :services
 

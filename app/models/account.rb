@@ -14,7 +14,7 @@
 #
 
 class Account < ActiveRecord::Base
-	attr_accessible :email, :password, :password_confirmation, :authorization, :ty
+	attr_accessible :email, :password, :password_confirmation, :authorization, :ty, :profile_attributes
 	
 	has_secure_password
 	has_many :microposts, dependent: :destroy
@@ -24,7 +24,8 @@ class Account < ActiveRecord::Base
 		                         class_name:  "Relationship",
 		                         dependent:   :destroy
 	has_many :followers, through: :reverse_relationships, source: :follower
-	has_one :profile, dependent: :destroy  	
+	has_one :profile, dependent: :destroy
+	accepts_nested_attributes_for :profile  	
 
 	before_save { |account| account.email = email.downcase }
 	before_save :create_remember_token

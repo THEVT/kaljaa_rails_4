@@ -7,6 +7,8 @@ class BlogsController < ApplicationController
 
 	def index
 		@blogs = Blog.paginate(page: params[:page])
+		@blog_search = Blog.search(params[:q])
+		@blog_search_result = @blog_search.result(distinct: true)
 		#@profile_id= @blogs.profile_id
 		#@profile= Profile.find(@profile_id)
 	end
