@@ -1,12 +1,13 @@
+<div class="row spacer">
+</div>
+<h4>Interests</h4>
+<div class= "row border"></div>
 <% if current_user.admin? || current_user?(@account) %>
-<p> Hello there </p>
 	<%if !Interest.exists?(profile_id: @profile.id) %>
 		<%= form_for(@interest) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
-		  <div class="field">
 		    <%= f.text_area :content, placeholder: "Add some interests..." %>
-		  </div>
-		  <%= f.submit "Post"%>
+		  <%= f.submit "Add Interests", class: "btn" %>
 		<% end %>
 	<% else %>
 		<p>
@@ -20,7 +21,6 @@
 <% else %>
 
 	<p>
-		<b>Interests:</b>
 		<%= @profile.interest.content %>
 	</p>
 

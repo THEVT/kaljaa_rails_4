@@ -70,9 +70,32 @@ p {
 	word-wrap: break-word;
 }
 
+ul {
+	list-style-type: none;
+}
+
+h11 {
+	font-size: 3em;
+	letter-spacing: -2px;
+	margin-bottom: 30px;
+	color: red;
+}
+
+#dark {
+	color: #333;
+}
+
+#dark_bold {
+	color: #333;
+	font-weight: bold;
+}
+
 /* header */
 
 .navbar-inner {
+	background-color: #660000;
+}
+.navbar-inverse .navbar-inner {
 	background-color: #660000;
 }
 
@@ -85,7 +108,7 @@ p {
 }
 
 .header_accent {
-	height: 10px;
+	height: 12px;
 	background-color: #660000;//#2d1a3c;
 }
 
@@ -160,6 +183,24 @@ $grayMediumLight: #eaeaea;
   @include box_sizing;
 }
 
+.spacer {
+	margin-top: 20px;
+}
+
+.border {
+	border-bottom:1px solid #d9d9d9;
+	width: 100%;
+	margin-bottom: 15px;
+}
+
+.border-15-margin {
+	border-top:1px solid #d9d9d9;
+	width: 100%;
+	margin-top: 15px;
+	margin-bottom: 15px;
+}
+
+
 /* forms */
 
 input, textarea, select, .uneditable-input {
@@ -170,7 +211,8 @@ input, textarea, select, .uneditable-input {
 }
 
 textarea {
-	width: 100%;
+	width: 90%;
+	height: 200px;
 }
 
 input {

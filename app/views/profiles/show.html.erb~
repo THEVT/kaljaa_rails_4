@@ -22,7 +22,7 @@
 			<h4><%= @profile.profile_type.capitalize %> Profile</h4>
 		<% else %>
 			<h2><%= @profile.company %></h2>
-			<h4><%= @profile.profile_type.capitalize %> Profile</h4>
+			<h5><%= @profile.profile_type.capitalize %> Profile</h5>
 		<% end %>		
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#Info" data-toggle="tab">Info</a></li>
@@ -61,6 +61,8 @@
 		
 				<%= render 'abouts/about' %>
 
+				<%= render 'locations/maps' %>
+
 				<%= render 'locations/location' %>
 			</div>
 			<div class="tab-pane" id="Services">
@@ -74,6 +76,9 @@
 				<%= render 'honorablebeers/honorablebeer' %>
 			</div>
 			<div class="tab-pane" id="Beers">
+
+				<h2 id="black"><b><%= @profile.company %> Beers</b></h2>
+
 				<%= render 'beers/beer_form' %>
 		
 				<%= render 'beers/show' %>

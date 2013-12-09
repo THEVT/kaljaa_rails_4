@@ -1,14 +1,13 @@
-
+<div class="row spacer">
+</div>
 <h4>Activities</h4>
 
 <% if current_user.admin? || current_user?(@account) %>
 	<%if !Activity.exists?(profile_id: @profile.id) %>
 		<%= form_for(@activity) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
-		  <div>
 		    <%= f.text_area :content, placeholder: "Add some activities..." %>
-		  </div>
-		  <%= f.submit "Post"%>
+		  <%= f.submit "Add Activities", class: "btn"%>
 		<% end %>
 	<% else %>
 		<p>

@@ -22,6 +22,7 @@ KaljaaFb::Application.routes.draw do
 	end
 	resources :beers do
 		resources :comments
+		member { post :vote }
 	end
 	resources :beercentrals
 	resources :blogs do
@@ -84,7 +85,7 @@ KaljaaFb::Application.routes.draw do
 	resources :abouts
 	resources :locations
 	resources :reviewbeers do
-		#resources :comments
+		resources :comments
 		member { post :vote }
 	end
 	resources :services

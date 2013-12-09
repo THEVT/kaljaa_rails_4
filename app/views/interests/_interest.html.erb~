@@ -1,28 +1,27 @@
+<div class="row spacer">
+</div>
+<h4>Interests</h4>
+
 <% if current_user.admin? || current_user?(@account) %>
-<p> Hello there </p>
-<%= @profile.id %>
-	<%if !Activity.exists?(profile_id: @profile.id) %>
-		<%= form_for(@activity) do |f| %>
+	<%if !Interest.exists?(profile_id: @profile.id) %>
+		<%= form_for(@interest) do |f| %>
 		  <%= render 'shared/error_messages', object: f.object %>
-		  <div class="field">
-		    <%= f.text_area :content, placeholder: "Add some activities..." %>
-		  </div>
-		  <%= f.submit "Post"%>
+		    <%= f.text_area :content, placeholder: "Add some interests..." %>
+		  <%= f.submit "Add Interests", class: "btn" %>
 		<% end %>
 	<% else %>
 		<p>
-			<b>Activities:</b>
-			<%= best_in_place @profile.activity, :content, type: :textarea, size: "15x12" %>
+			<b>Interests:</b>
+			<%= best_in_place @profile.interest, :content, type: :textarea %>
 		</p>
 
-	<%= link_to 'Edit Activities',  edit_activity_path(@activity_present) %>
+	<%= link_to 'Edit Interests',  edit_interest_path(@interest_present) %>
 	<% end %>
 
 <% else %>
 
 	<p>
-		<b>Activities:</b>
-		<%= @profile.activity.content %>
+		<%= @profile.interest.content %>
 	</p>
 
 

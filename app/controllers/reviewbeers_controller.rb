@@ -72,7 +72,7 @@ class ReviewbeersController < ApplicationController
 	end
 
 	def vote
-		value = params[:type] == "up" ? 1 : -1
+		value = params[:type] == "up" ? 1 : 0
 		@reviewbeer= Reviewbeer.find(params[:id])
 		@reviewbeer.add_or_update_evaluation(:votes, value, current_profile)
 		respond_to do |format|

@@ -26,22 +26,10 @@
 		  Website:
 		  <b><%= best_in_place @profile, :website %></b>
 		</p>
-		<% if @profile.website? %>
-			<p>
-			  Website:
-			  <b><%= @profile.website %></b>
-			</p>
-		<% end %>
 		<p>
 		  Phone:
 		  <b><%= best_in_place @profile, :phone %></b>
 		</p>
-		<% if @profile.phone? %>
-			<p>
-			  Phone:
-			  <b><%= @profile.phone %></b>
-			</p>
-		<% end %>
 		<p>
 		  City:
 		  <b><%= best_in_place @profile, :city %></b>

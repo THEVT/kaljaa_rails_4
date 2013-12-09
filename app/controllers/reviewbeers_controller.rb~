@@ -76,7 +76,7 @@ class ReviewbeersController < ApplicationController
 		@reviewbeer= Reviewbeer.find(params[:id])
 		@reviewbeer.add_or_update_evaluation(:votes, value, current_profile)
 		respond_to do |format|
-			format.html { redirect_to :back }
+			format.html { redirect_to @profile }
 			format.js
 		end
 		#redirect_to :back, notice: "Thank you for voting!"

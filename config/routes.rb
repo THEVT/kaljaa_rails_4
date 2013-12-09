@@ -22,6 +22,7 @@ KaljaaFb::Application.routes.draw do
 	end
 	resources :beers do
 		resources :comments
+		member { post :vote }
 	end
 	resources :beercentrals
 	resources :blogs do

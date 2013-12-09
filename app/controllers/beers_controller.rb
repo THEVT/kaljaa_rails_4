@@ -59,6 +59,17 @@ class BeersController < ApplicationController
 	def info
 	end
 
+	def vote
+		value = params[:type] == "up" ? 1 : 0
+		@beer= Beer.find(params[:id])
+		@beer.add_or_update_evaluation(:votes, value, current_profile)
+		respond_to do |format|
+			format.html { redirect_to @profile }
+			format.js
+		end
+		#redirect_to :back, notice: "Thank you for voting!"
+	end
+
 	private
 
 	def correct_user

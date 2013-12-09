@@ -1,5 +1,6 @@
+<h4>General Info</h4>
+<div class= "row border"></div>
 <% if current_user.admin? || current_user?(@account) %>
-	<h4>General Info</h4>
 	<% if @profile.profile_type == "social" %>
 		<p>
 		  First Name:

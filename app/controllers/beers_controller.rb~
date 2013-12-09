@@ -29,6 +29,7 @@ class BeersController < ApplicationController
 	end
 
 	def edit
+		@profile= current_user.profile
 		@beer = Beer.find(params[:id])
 	end
 
@@ -56,6 +57,17 @@ class BeersController < ApplicationController
 	end
 
 	def info
+	end
+
+	def vote
+		value = params[:type] == "up" ? 1 : -1
+		@beer= Beer.find(params[:id])
+		@beer.add_or_update_evaluation(:votes, value, current_profile)
+		respond_to do |format|
+			format.html { redirect_to @profile }
+			format.js
+		end
+		#redirect_to :back, notice: "Thank you for voting!"
 	end
 
 	private
