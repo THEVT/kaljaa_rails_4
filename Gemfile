@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 gem "bcrypt-ruby", "3.0.1"
-gem "mysql2", "~> 0.3.11"
+#gem "mysql2", "~> 0.3.11"
+gem 'pg'
 gem "faker", "~> 1.1.2"
 gem "will_paginate", "~> 3.0.4"
 gem "paperclip", "~> 3.4.1"
